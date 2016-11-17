@@ -34,7 +34,7 @@ def select_sort(lists):
 arr=[46,243,1,3,6,8,9]
 k=bubbleSort(arr)
 print k
-##############################
+####################################
 ######二分法查找######################
 def binarySearch(self, nums, target):
         # write your code here
