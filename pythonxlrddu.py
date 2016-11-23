@@ -19,4 +19,6 @@ print rowscontext
 print sheet1.cell(1,0).value.encode('utf-8')
 print sheet1.cell_value(4,0).encode('utf-8')
 print sheet1.row(1)[0].value.encode('utf-8')
+print sheet1.row(1)[0].ctype
 print sheet1.row_values(0)
+#ctype : 0 empty,1 string, 2 number, 3 date, 4 boolean, 5 error
