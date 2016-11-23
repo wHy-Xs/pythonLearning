@@ -22,3 +22,5 @@ print sheet1.row(1)[0].value.encode('utf-8')
 print sheet1.row(1)[0].ctype
 print sheet1.row_values(0)
 #ctype : 0 empty,1 string, 2 number, 3 date, 4 boolean, 5 error
+#col_values(0)获取整列数
+#如果遇到中文可以现获取这个列的值，然后再unicode，如果想直接输出中文，则需要先判断类型然后再看是否需要encode('utf-8')
