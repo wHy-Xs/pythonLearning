@@ -50,17 +50,41 @@ class readExcel():
         print '这是表'+str(onlysheet)+".本表有"+str(sheetContext.nrows)+"行"+","+str(sheetContext.ncols)+"列."
         print sheetContext
 
-        title=sheetContext.row_values(0)#取得本表的标题
-        for i in title:
-            print unicode(i),   #输出本表的标题
-        print ''
-
         if row>sheetContext.nrows or col>sheetContext.ncols:
+            print '超出范围'
             return False
         else:
-            context=sheetContext.row(row)[col].value
-            print context
-        
+            title=sheetContext.row_values(0)#取得本表的标题
+            for i in title:
+                biaoti={}
+                print unicode(i),   #输出本表的标题
+            print ''
+            if col==0:
+                context=sheetContext.row(row)[col].value
+                print unicode(title[0]),context
+            elif col==1:
+                context=sheetContext.row(row)[col].value
+                print unicode(title[1]),context
+            elif col==2:
+                context=sheetContext.row(row)[col].value
+                print unicode(title[2]),context
+'''
+    def allSheet(self,onlysheet):
+        sheetContext=self.workbook.sheet_by_name(onlysheet)
+        l1=sheetContext.row_values(0)
+        l2=sheetContext.row_values(1)
+        l3=sheetContext.row_values(2)
+        for i in range(len(l1)):
+            print unicode(l1[i]),
+        print ''
+        for j in range(len(l1)):
+            for i in range(sheetContext.ncols-1):
+                print unicode(l2[i]),
+            print ''
+            for i in range(len(l1)):
+                print unicode(l3[i]),
+            print ''
+'''      
     def printdd(selfmai):
         print 'dfdf'
 
@@ -75,10 +99,12 @@ def main():
     local1=input()
     local2=input()
     excel.readContext(onlysheet,local1,local2)
+    excel.allSheet(onlysheet)
 
 if __name__ == "__main__":
      main()
 
     
+
 
 
