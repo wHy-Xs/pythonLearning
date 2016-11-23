@@ -1,0 +1,68 @@
+#读取一个.txt文件中的内容，按要求取得所需要的内容######
+"""
+def main():
+    print 'dkkdfd'
+    path="D:\pythonCode/2.txt"
+    comts=read_comts(path)
+    print comts
+
+def read_comts(comt_dir):
+    comts = {}
+    context={}
+    try:
+        with open(comt_dir) as read_file:
+            for line in read_file:
+                splits=line.split('\t')
+                if(len(splits)<2):
+                    continue
+                comtid, content = splits[:2]
+                comts[comtid]=1
+                context[comtid]=content
+    except IOError:
+        raise Exception('read comt file %s failed' % comt_dir)
+    return comts,context
+
+if __name__ == '__main__':
+    main()
+"""
+###################################################
+##一次性往文件中写入多行##############################
+'''
+list=['1    nihao  com.com','nidaye','sfdsfsdf']
+path="D:\pythonCode/4.txt"
+f=open(path,'w')
+f.seek(0)
+for line in list:
+    f.writelines(line+'\n')
+f.close()
+'''
+###################################################
+#如何判断一个文件有多少行#############################
+'''
+path="D:\pythonCode/4.txt"
+length=len(open(path).readlines())
+print length
+'''
+##################################################
+#用正则表达式读取匹配的字段然后写入另一个文件#############
+'''
+import os  
+import sys  
+import re  
+  
+file_name = 'original.log'  
+  
+reg='^(\d+-\d+-\d+\s+\d+:\d+:\d+).*addcash:from=(\d+):account=(.+)platform=(.+):userid=(\d+):mac=(.+):os=(\d+):roleid=(\d+):lev=(\d+):totalcash=(\d+):cash=(\d+):yuanbao=(\d+):id1=(.+):id2=(\d+):hint=(.+):idfa=(.*)'  
+  
+fw = open('result.txt','w')  
+f = open(file_name,'r')  
+  
+for line in f:  
+    m = re.match(reg,line)  
+    if m:  
+        fw.write('\t'.join([ x.strip() for x in list(m.groups()) ])+'\n')  
+  
+f.close()  
+fw.close() 
+'''
+##################################################
