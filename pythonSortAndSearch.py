@@ -103,6 +103,24 @@ print k
 归并就是先将数组分成两部分直至最简，然后用另一个函数处理最简得到结果返回，依次这样处理，最终的结果就是我们要得到的结果。
 详细讲解：http://blog.csdn.net/guoziqing506/article/details/50949854
 '''
+#####################################
+########桶排序#######################
+def bucket_sort(aList):  
+    n = len(aList)  
+    result = [0 for i in range(n)]  
+    for i in range(n):  
+        result[aList[i] - 1] = aList[i]  
+    return result  
+
+def bucket_sort(aList):  
+    n = len(aList)  
+    for i in range(n):  
+        # aList第i位不符合，一直执行此循环  
+        while aList[i] != i + 1:  
+            # 以下三行代码实现aList[i]与aList[aList[i] - 1]的交换  
+            temp = aList[i]  
+            aList[i] = aList[temp - 1]  
+            aList[temp - 1] = temp 
 ######二分法查找######################
 def binarySearch(self, nums, target):
         # write your code here
