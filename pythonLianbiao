@@ -1,116 +1,187 @@
+# coding=UTF-8
 class Node():
-  __slots__=['_item','_next']
-  def __init__(self,item):
-    self._item=item
-    self._next=None
-  def getItem(self):
-    return self._item
-  def getNext(self):
-    return self._next
-  def setItem(self,newitem):
-    self._item=newitem
-  def setNext(self,newnext):
-    self._next=newnext
-      
-class SingleLinkedList(): 
-  def __init__(self):
-    self._head=None #初始化为空链表
-  def isEmpty(self):
-    return self._head==None
-  def size(self):
-    current=self._head
-    count=0
-    while current!=None:
-      count+=1
-      current=current.getNext()
-    return count
-  def travel(self):
-    current=self._head
-    while current!=None:
-      print current.getItem()
-      current=current.getNext()
+    #初始化节点，节点包括数据和指针域
+    def __init__(self,item):
+        self.data = item     #数据域
+        self.nextsite = None #指针域
 
-  #在链表的头加一个元素
-  def add(self,item):
-    temp=Node(item)     #设置新元素的值
-    temp.setNext(self._head) #将指针指向原先的第一个节点
-    self._head=temp   #然后将头节点指向新加的元素
-  #在链表尾部加一个元素
-  def append(self,item):
-    temp=Node(item)
-    if self.isEmpty():
-      self._head=temp  #若为空表，将添加的元素设为第一个元素
-    else:
-      current=self._head
-      while current.getNext()!=None:
-        current=current.getNext()  #遍历链表
-      current.setNext(temp)  #此时current为链表最后的元素
-  # search检索元素是否在链表中
-  def search(self,item):
-    current=self._head
-    founditem=False
-    while current!=None and not founditem:
-      if current.getItem()==item:
-        founditem=True
-      else:
-        current=current.getNext()
-    return founditem
-  #index索引元素在链表中的位置
-  def index(self,item):
-    current=self._head
-    count=0
-    found=None
-    while current!=None and not found:
-      count+=1
-      if current.getItem()==item:
-        found=True
-      else:
-        current=current.getNext()
-    if found:
-      return count
-    else:
-      raise ValueError,'%s is not in linkedlist'%item
-  #remove删除链表中的某项元素
-  def remove(self,item):
-    current=self._head
-    pre=None
-    while current!=None:
-      if current.getItem()==item:
-        if not pre:
-          self._head=current.getNext()
+    #获得指向下一个节点的指针
+    def getNext(self):
+        return self.nextsite
+
+    #获得数据
+    def getItem(self):
+        return self.data
+
+    #设置节点的数据
+    def setItem(self,newitem):
+        self.data = newitem
+
+    #设置节点的指针域
+    def setNext(self,nextadress):
+        self.nextsite = nextadress
+'''
+作为一个链表，首先要节点（数据域+指针域），链表就是通过在指针域存放下一个节点的地址，所以需要
+一个获取下一个地址的方法getNext()方法，同时还需要设置地址的方法，同理，还需要设置数据和得到
+数据的方法。这就是节点中包含的所有信息
+'''
+
+
+'''
+    链表类
+'''
+class lianbiao():
+
+    '''初始化函数 '''
+    def __init__(self):
+        self.head=None
+
+    '''
+        判断链表为空：如果头节点指向第一个节点，如果头节点为None，则说明链表为空
+    '''
+    def isEmpty(self):
+        return self.head==None
+
+    '''
+       遍历输出链表所有元素：首先current = self.head,然后遍历依次输出
+    '''
+    def travel(self):
+        current=self.head
+        while current!=None:
+            print current.getItem()
+            current=current.getNext()
+
+    '''
+        链表长度：想知道链表的长度只要在遍历链表的时候增加一个cout计数就可以
+    '''
+    def size(self):
+        current=self.head
+        count=0
+        while current!=None:
+            count+=1
+            current=current.getNext()
+        return count
+
+    '''
+        在链表的头节点出增加一个新节点：首先拿到这个新加节点，然后将新节点的nextsize指向头节点指向的节点，最后在叫头节点指向新节点
+    '''
+    def add(self,item):
+        tmp=Node(item)
+        tmp.setNext(self.head)
+        self.head=tmp
+
+    '''
+        在链表的尾部增加一个新节点：首先我们要判断链表是否为空，如果为空直接在在头节点插入即可
+        如果不是空的话，直接遍历到最后一个然后改变指向
+    '''
+    def append(self,item):
+        tmp=Node(item)
+        if self.isEmpty():
+            self.head=tmp
         else:
-          pre.setNext(current.getNext())
-        break
-      else:
-        pre=current
-        current=current.getNext()
-  # insert链表中插入元素
-  def insert(self,pos,item):
-    if pos<=1:
-      self.add(item)
-    elif pos>self.size():
-      self.append(item)
-    else:
-      temp=Node(item)
-      count=1
-      pre=None
-      current=self._head
-      while count<pos:
-        count+=1
-        pre=current
-        current=current.getNext()
-      pre.setNext(temp)
-      temp.setNext(current)
-  
+            current=self.head
+            while current.getNext()!=None: #遍历容易出错，注意current与current.getNext()的区别
+                current=current.getNext()
+            current.setNext(tmp)
+
+    '''
+        找出指定元素在链表中的位置：首先有个计数count，然后有个found的标志位
+         while current不为空值并且not found为真：（found位是为了跳出循环，如果没有则一直循环）
+            如果找到了：found=true
+            如果没找到：指向下一位
+         如果found=true:
+            就返回count
+         如果found=false:
+            没找到          
+    '''
+    def index(self,item):
+        current=self.head
+        count=0
+        found=None
+        while current!=None and not found:
+          count+=1
+          if current.getItem()==item:
+            found=True
+          else:
+            current=current.getNext()
+        if found:
+          return count
+        else:
+          raise ValueError,'%s is not in linkedlist'%item
+    
+     '''
+        查看item是否存在于链表中，代码基本与index重复
+     '''
+    def check(self,item):
+        current=self.head
+        found=False
+        while current!=None and not found:
+            if current.getItem()==item:
+                found=True
+            else:
+                current=current.getNext()
+        return found
+   
+    '''
+        向链表中添加新节点（非头节点非尾节点）:首先判断是否在头节点或者在末尾添加，如果不是在遍历添加
+    '''
+    def insert(self,locate,item):
+       if locate<=1:
+           self.add(item)
+       elif locate>self.size():
+           self.append(item)
+       else:
+           current=self.head
+           pre=None
+           count=0
+           tmp=Node(item)
+           while count<locate:
+               count+=1
+               pre=current
+               current=current.getNext()
+           pre.setNext(tmp)
+           tmp.setNext(current)
+    
+    '''
+        删除指定节点：进入遍历循环
+                如果找到了：
+                    是链表第一个元素：
+                        改变指向
+                    并且不是第一个：
+                        改变指向
+                如果没有找到：
+                    指向下一个
+    '''
+    def remove(self,item):
+         current=self.head
+         pre=None
+         while current!=None:
+             if current.getItem()==item:
+                 if not pre:
+                    self.head=current.getNext()
+                 else:
+                     pre.setNext(current.getNext())
+                 break
+             else:
+                 pre=current
+                 current=current.getNext()
+
 if __name__=='__main__':
-  a=SingleLinkedList()
-  for i in range(1,10):
-    a.append(i)
-  print a.size()
-  a.travel()
-  print a.search(6)
-  print a.index(5)
-  a.remove(4)
-  a.travel()
-  a.insert(4,100)
-  a.travel()
+      a=lianbiao()
+      for i in range(1,10):
+          a.append(i)
+      a.add(2)
+
+      print a.size()
+      a.travel()
+      print 'ddddddddddddddddd'
+      print a.index(2)
+      print a.check(4)
+      a.insert(4,888)
+      a.travel()
+      print a.check(6)
+      print a.index(5)
+      a.remove(4)
+      a.travel()
+      a.insert(4,100)
+      a.travel()
