@@ -149,6 +149,8 @@ def main():
 '''
   普通的二分查找只是针对无重复的有序序列，则再次会有些变形需要考虑总结：
   1.数组中含有重复元素有序序列，找到重复元素第一次出现的位置
+  2.看数组中是否有这个元素，如果没有返回这个元素应该插在哪，此时只需返回最左侧的值即可
+  3.二维矩阵搜查目标数，前提是这个二维矩阵不管列与行都是有序的。
 '''
 ##########################################
 class Solution:  
@@ -175,3 +177,50 @@ class Solution:
 当找到重复元素时，不一定就是我们要找的第一次出现的位置，按排序它一定在小于等于mid这一次还有，而且最终肯定是num[left]==target,
 注意越界条件
 '''
+##############################################
+'''
+写出一个高效的算法来搜索 m × n矩阵中的值。这个矩阵具有以下特性：每行中的整数从左到右是排序的.每行的第一个数大于上一行的最后一个整数
+样例：
+考虑下列矩阵：
+[
+  [1, 3, 5, 7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+]
+
+给出 target = 3，返回 true
+'''
+class Solution:  
+    """ 
+    @param matrix, a list of lists of integers 
+    @param target, an integer 
+    @return a boolean, indicate whether matrix contains target 
+    """  
+    def searchMatrix(self, matrix, target):  
+        row = len(matrix)  
+        if row == 0:  
+            return False  
+        col = len(matrix[0])  
+        # left,right代表列数  
+        left, right = 0, col - 1  
+        # high,low代表行数  
+        high, low = row - 1, 0  
+        while low <= high:  
+            mid1 = (low + high) // 2  
+            if matrix[mid1][0] == target:  
+                return True  
+            if matrix[mid1][0] > target:  
+                high = mid1 - 1  
+            if matrix[mid1][0] < target:  
+                low = mid1 + 1  
+        # 上面的循环结束后，low-1为target所在的行  
+        while left <= right:  
+            mid2 = (left + right) // 2  
+            if matrix[low - 1][mid2] == target:  
+                return True  
+            if matrix[low - 1][mid2] > target:  
+                right = mid2 - 1  
+            if matrix[low - 1][mid2] < target:  
+                left = mid2 + 1  
+        return False  
+      
