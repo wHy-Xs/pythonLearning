@@ -146,5 +146,32 @@ def main():
     k=binarySearch(True,l,1)
     print k
 #####################################
+'''
+  普通的二分查找只是针对无重复的有序序列，则再次会有些变形需要考虑总结：
+  1.数组中含有重复元素有序序列，找到重复元素第一次出现的位置
+'''
+##########################################
+class Solution:  
+    # @param nums: The integer array  
+    # @param target: Target number to find  
+    # @return the first position of target in nums, position start from 0   
+    def binarySearch(self, nums, target):  
 
-      
+        left, right = 0, len(nums) - 1  
+
+        while left <= right:  
+            mid = (left + right) // 2  
+            # 即便nums[mid] == target，也要继续查左边的部分  
+            if nums[mid] >= target:  
+                right = mid - 1  
+            else:  
+                left = mid + 1  
+
+        if left <= len(nums) and nums[left] == target:  
+            return left  
+
+        return -1  
+'''
+当找到重复元素时，不一定就是我们要找的第一次出现的位置，按排序它一定在小于等于mid这一次还有，而且最终肯定是num[left]==target,
+注意越界条件
+'''
