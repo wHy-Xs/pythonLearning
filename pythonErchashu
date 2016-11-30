@@ -6,3 +6,27 @@
 2. 中序(in-order)：先左后根再右
 3. 后序(post-order)：先左后右再根
 '''
+1.1前序遍历的非递归方法
+def preorderTraversal(self, root):  
+        result = []  
+        stack = []  
+        # 也可写成 if root:  
+        if root != None:  
+            stack.append(root)  
+        while len(stack) != 0:  
+            cur = stack.pop()  
+            result.append(cur.val)  
+            if cur.right != None:  
+                stack.append(cur.right)  
+            if cur.left != None:  
+                stack.append(cur.left)  
+        return result  
+''' 
+思路：用栈的思想实现了前序遍历
+1. stack存储当前节点，一开始，当然是根节点A，stack = [A]
+2. 删除stack的栈顶元素，将栈顶元素所存储的值加入到最后我们要的结果列表里面
+3. 如果被删除的元素有右孩子，将右孩子加入stack，stack = [C]
+4. 如果被删除的元素有左孩子，将左孩子加入stack，stack = [C,B]
+可以看出，由于右孩子先加入，所以再把这个新的栈从第一步开始迭代时，就会先处理左孩子（图中的B），
+以此类推，处理左孩子时，又会先删除该节点（B），再加入该节点（B）的右孩子：stack = [C,E]，最后加入左孩子：stack = [C,E,D]...
+'''
