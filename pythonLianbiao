@@ -232,7 +232,14 @@ if __name__ == '__main__':
         print(newhead.value, )
         newhead = newhead.next
         
-        
+'''
+这种方法就是一个一个翻转，总体思路：pre为保存前一个节点，head为头节点，tmp保存下一个节点。
+流程：首先拿到tmp（下一个节点），
+      然后将当前的节点指向上一个节点，
+      然后将上一个节点pre向下移动一位，
+      同时将头节点指向下一个节点转移到
+'''
+##############################################
 #2.递归
 def reverse_recursion(head):
     if not head or not head.next:
@@ -240,6 +247,8 @@ def reverse_recursion(head):
 
     new_head = reverse_recursion(head.next)
 
-    head.next.next = head
-    head.next = None
-    return new_head
+    head.next.next = head #就是头节点指向的下一个节点的指向头节点
+    head.next = None   #同时将头节点指向None
+    return new_head     #返回头节点
+'''
+递归的方法非常简洁，但是效率不高。这种方法用的不熟练
