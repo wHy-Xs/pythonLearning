@@ -30,3 +30,17 @@ def hcf(x, y):
     b = temp
   return a
   ###############################################################################
+   '''
+   判断一个字符串是否是回文结构
+   1.方法1：用python的reverse方法
+   2.就是遍历第i个是否等于len()-i-1个
+'''
+#方法1：
+def isPalindrome1(s):
+    for i in range(len(s))/2:
+        if not s[i] == s[len(s)-i-1]:
+            return False
+    return True
+#方法2：
+def isPalindrome2(s):
+    return s == s[::-1]
