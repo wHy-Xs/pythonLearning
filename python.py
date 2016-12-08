@@ -83,3 +83,8 @@ result = pattern.findall('as3SiOPdj#@23awe')
 print result
 # ['a', 's', 'S', 'i', 'O', 'P', 'd', 'j', 'a', 'w', 'e']
 #################################################################################################################
+8.python中的.find() .replace .strip() .split() 
+1).find():find(str, pos_start, pos_end)  返回值：如果查到：返回查找的第一个出现的位置。否则，返回-1。
+2).repalce():str.replace(old, new[, max])把旧的换成新的
+3）.strip():strip() 方法用于移除字符串头尾指定的字符（默认为空格）
+4).split():split()通过指定分隔符对字符串进行切片,返回分割后的 字符串列表(注意！！！)。
