@@ -13,3 +13,4 @@ a=['1','2','3']
   isinstance(a, int)
   True
 2.遗留为题：发布方法
+3.try/except/finally方法运用
