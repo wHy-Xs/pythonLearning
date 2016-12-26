@@ -8,3 +8,8 @@ a=['1','2','3']
   list.reverse() 翻转数组
   list.append(value)  在数组末尾追加一个值
   list.extend(list1)  在数组末尾追加另一个数组
+判断数据类型：
+  a = 111
+  isinstance(a, int)
+  True
+2.遗留为题：发布方法
