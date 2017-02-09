@@ -1,0 +1,25 @@
+'''
+一 常用模块
+1.sys模块
+  sys.argv 命令行输入
+    eg:python中的sys模块就是传入命令行非常方便 执行python 1.py case1 case2 case3时，python中sys.argv[1]=case1，sys.argv[2]=case2以此类推
+  sys.platform 当前平台
+    eg:print sys.platform结果为win32
+  sys.path 模块的搜索路径
+    eg:sys.path.append("dfdf"):对于模块和自己写的程序不在同一个目录下，可以把模块的路径通过sys.path.append(路径)添加到程序中。
+  sys.stdout 标准输出 
+  eg:
+    import sys
+    savedStdout = sys.stdout  #保存标准输出流
+    with open('out.txt', 'w+') as file:
+        sys.stdout = file  #标准输出重定向至文件
+        print 'This message is for file!'
+
+    sys.stdout = savedStdout  #恢复标准输出流
+    print 'This message is for screen!'   
+  sys.stdin 标准输入 
+  eg:
+    for line in sys.stdin:
+       print line
+##################################################################
+'''
