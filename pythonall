@@ -174,3 +174,51 @@
       10、radiansdict.values()：以列表返回字典中的所有值
   
 '''
+##########################################################
+'''
+无参装饰器：
+    def deco(func):
+      def _deco():
+        print 'before addd'
+        func()
+        print 'after addd'
+      return _deco
+   
+    @deco
+    def myfunc():
+      print 'lallalal'
+
+    myfunc()
+
+有参数装饰器：
+def deco(arg):
+  def _deco(func):
+    def __deco():
+      print '1'
+      func()
+      print '2'
+    return __deco
+  return _deco
+
+@deco("hello")
+def myfunc():
+  print 'nihao'
+
+myfunc()
+
+函数参数传递装饰器：
+def deco(arg):
+  def _deco(func):
+    def __deco(str):
+      print '1'
+      func(str)
+      print '2'
+    return __deco
+  return _deco
+
+@deco("hello")
+def myfunc(str):
+  print 'nihao',str 
+
+myfunc("lala")
+'''
