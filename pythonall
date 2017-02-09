@@ -8,6 +8,9 @@
     eg:print sys.platform结果为win32
   sys.path 模块的搜索路径
     eg:sys.path.append("dfdf"):对于模块和自己写的程序不在同一个目录下，可以把模块的路径通过sys.path.append(路径)添加到程序中。
+    经典用法：
+            CONF_PATH = os.path.dirname(os.path.abspath(__file__)) + "/../conf/"
+            sys.path.append(CONF_PATH)
   sys.stdout 标准输出 :重定向的时候要注意先保存标准输出流,print==sys.stdout.write("dfdfd"\n)
   eg:
     import sys
