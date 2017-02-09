@@ -49,3 +49,75 @@
     '/root/haha/test'
   12 os.chdir(path): 方法用于改变当前工作目录到指定的路径。
 '''
+文件操作
+工作模式
+      ‘r’模式:以读方式打开，不能进行写操作，文件必须是已经存在的
+      ‘r+’模式：以读写方式打开，文件必须是已经存在的
+      ‘w’模式：以写方式打开，不能进行读操作，若文件存在，则先清空，然后重新创建；若不存在，则创建文件
+      ‘w+’模式：以读写方式打开，若文件存在，则先清空，然后重新创建；若不存在，则创建文件
+      ‘a’模式：以追加方式打开，不能进行读操作，把数据追加到文件的末尾；若不存在，则创建文件
+      ‘a+’模式：以读写方式打开，把数据追加到文件的末尾；若不存在，则创建文件
+      ‘b’模式：以二进制模式打开，不能作为第一个字符出现，需跟以上模式组合使用，
+1.读取写入文件
+  python中有三个方法来处理文件内容的输入：
+    read() 一次读取全部的文件内容。
+    readline() 每次读取文件的一行。
+    readlines() 读取文件的所有行，返回一个字符串列表。
+   
+    f=open("path","r/w/a+")
+    kk=f.read()
+    print kk
+    f.close()
+ 2.多行写入  
+   l = ['\nhello dear!','\nhello son!','\nhello baby!\n']
+   f = open('/tmp/test.txt','a')
+   f.writelines(l)
+   f.close()
+##一次性往文件中写入多行##############################
+    '''
+    list=['1    nihao  com.com','nidaye','sfdsfsdf']
+    path="D:\pythonCode/4.txt"
+    f=open(path,'w')
+    f.seek(0)
+    for line in list:
+        f.writelines(line+'\n')
+    f.close()
+    '''
+###################################################
+#如何判断一个文件有多少行#############################
+    '''
+    path="D:\pythonCode/4.txt"
+    length=len(open(path).readlines())
+    print length
+    '''
+##################################################
+#读取一个.txt文件中的内容，按要求取得所需要的内容######
+    """
+    def main():
+        print 'dkkdfd'
+        path="D:\pythonCode/2.txt"
+        comts=read_comts(path)
+        print comts
+
+    def read_comts(comt_dir):
+        comts = {}
+        context={}
+        try:
+            with open(comt_dir) as read_file:
+                for line in read_file:
+                    splits=line.split('\t')
+                    if(len(splits)<2):
+                        continue
+                    comtid, content = splits[:2]
+                    comts[comtid]=1
+                    context[comtid]=content
+        except IOError:
+            raise Exception('read comt file %s failed' % comt_dir)
+        return comts,context
+
+    if __name__ == '__main__':
+        main()
+    """
+###################################################
+   
+'''
