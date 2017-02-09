@@ -26,4 +26,23 @@
  sys.exit()
 ##################################################################
 2.os模块
+  1  os.name      #显示当前使用的平台
+      >>> os.name
+      'nt'                  #这表示Windows
+      >>> os.name
+      'posix'             #这表示Linux
+  2  os.getcwd()      #显示当前python脚本工作路径
+  3  os.listdir('dirname')        #返回指定目录下的所有文件和目录名
+  4  os.remove('filename')       #删除一个文件
+  5  os.makedirs('dirname/dirname')     #可生成多层递规目录
+  6  os.rmdir('dirname')     #删除单级目录
+  8  os.system()    #运行shell命令,注意：这里是打开一个新的shell，运行命令，当命令结束后，关闭shell
+        >>> os.system('pwd')
+            /root/hahaha
+  9  os.path.abspath(path)    #显示当前绝对路径
+  10  os.path.dirname(path)    #返回该路径的父目录
+  11  os.path.join(path,name)   #连接目录与文件名或目录 结果为path/name
+    >>> os.path.join('/root/haha','test')
+    '/root/haha/test'
+  12 os.chdir(path): 方法用于改变当前工作目录到指定的路径。
 '''
