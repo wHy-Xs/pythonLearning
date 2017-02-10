@@ -157,6 +157,30 @@
     if __name__ == '__main__':
         main()
     """
+   ##########################################
+    注意：python中获取中文要注意编码与解码问题
+    def get_chinese(query, encoding='utf-8'):
+    """
+    获取中文部分
+    """
+    try:
+        query = query.decode(encoding)
+    except UnicodeDecodeError as error:
+        return ''
+
+    chinese = u'[\u4e00-\u9fa5A-Za-z]+'
+    pattern = re.compile(chinese)
+    result_list =  pattern.findall(query)
+    result_list_middle = []
+    for key in result_list:
+        try:
+            mid = key.encode(encoding)
+            result_list_middle.append(mid)
+        except UnicodeError as error:
+            continue 
+    return ' '.join(result_list_middle)//用空格将列表连接起来
+    
+    ############################################
 ###################################################
    
 '''
