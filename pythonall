@@ -297,7 +297,23 @@ stream: 指定将日志的输出流，可以指定输出到sys.stderr,sys.stdout
       8、radiansdict.setdefault(key, default=None)：和get()类似, 但如果键不已经存在于字典中，将会添加键并将值设为default
       9、radiansdict.update(dict2)：把字典dict2的键/值对更新到dict里
       10、radiansdict.values()：以列表返回字典中的所有值
-  
+      
+  3.字符串
+     string.count(str, beg=0, end=len(string)) 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出
+                                               现的次数
+     string.endswith(obj, beg=0, end=len(string)) 检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束，
+                                                  如果是，返回 True,否则返回 False.
+     string.find(str, beg=0, end=len(string)) 检测 str 是否包含在 string 中，如果 beg 和 end 指定范围，则检查是否包含在指定
+                                              范围内，如果是返回开始的索引值，否则返回-1
+     string.index(str, beg=0, end=len(string)) 跟find()方法一样，只不过如果str不在 string中会报一个异常.
+     string.join(seq) 以 string 作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串
+     string.replace(str1, str2,  num=string.count(str1)) 把 string 中的 str1 替换成 str2,如果 num 指定，则替换不超过 num 次.
+     string.strip()去掉两端的
+     string.split()分个字符串并返回list
+     max(str)返回字符串 str 中最大的字母。
+     min(str)返回字符串 str 中最小的字母。
+     string.lower()
+     string.upper()
 '''
 ##########################################################
 '''
