@@ -183,3 +183,9 @@ key = "%.4X" % ord(char)
       解释：ord()将char转换成ASCII编码
            %X将ord(char)转换成16进制
            %.4X将转换成的16进制保留4位
+#############################################################################################
+导入模块
+import macpath    #直接导入macpath模块
+from macpath import normcase    #导入macpath模块里的normcase函数
+from macpath import norm_error as rename    #导入macpath模块里的normcase函数，并给函数一个别名
+from macpath import *    #导入macpath模块里的所有函数
