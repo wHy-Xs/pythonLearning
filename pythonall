@@ -272,6 +272,12 @@ stream: 指定将日志的输出流，可以指定输出到sys.stderr,sys.stdout
     list.reverse() 翻转数组
     list.append(value)  在数组末尾追加一个值
     list.extend(list1)  在数组末尾追加另一个数组
+    list.sort() 
+   	   sorted: print sorted([5, 2, 3, 1, 4]) 结果：[1, 2, 3, 4, 5]
+	   sort:L = [5, 2, 3, 1, 4]
+	    	L.sort()
+	    	print L
+    sort()与sorted()的不同在于，sort是在原位重新排列列表，而sorted()是产生一个新的列表。
   判断数据类型：
     a = 111
     isinstance(a, int)
