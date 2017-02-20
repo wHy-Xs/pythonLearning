@@ -222,12 +222,10 @@ stream: 指定将日志的输出流，可以指定输出到sys.stderr,sys.stdout
     """
    ##########################################
     注意：python中获取中文要注意编码与解码问题
-    def get_chinese(query, encoding='utf-8'):
-    """
-    获取中文部分
-    """
+    def get_chinese(string, encoding='utf-8'):
+   
     try:
-        query = query.decode(encoding)
+        string = string.decode(encoding)
     except UnicodeDecodeError as error:
         return ''
 
