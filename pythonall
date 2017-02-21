@@ -86,6 +86,8 @@
       result = pattern.findall('as3SiOPdj#@23awe')
       print result
       # ['a', 's', 'S', 'i', 'O', 'P', 'd', 'j', 'a', 'w', 'e']
+    re.sub(pattern, repl, string, count)
+    re.sub用于替换字符串中的匹配项。将字符串中的pattern换成repl
 ######################################################################
 4.random模块
   random.random()用于生成一个0到1的随机符点数: 0 <= n < 1.0
