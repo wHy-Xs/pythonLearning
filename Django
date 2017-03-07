@@ -1,0 +1,12 @@
+1. 新建一个django项目: django-admin.py startproject project-name
+2. 新建应用:python manage.py startapp app-name
+3. 同步数据库：
+    python manage.py syncdb
+    注意：Django 1.7.1及以上的版本需要用以下命令
+    python manage.py makemigrations
+    python manage.py migrate
+4. 清空数据库：python manage.py flush
+5. 导出数据 导入数据
+    python manage.py dumpdata appname > appname.json
+    python manage.py loaddata appname.json
+6. 数据库命令行：python manage.py dbshell
