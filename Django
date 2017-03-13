@@ -22,3 +22,11 @@
                             用在嵌套的 for 循环中，
                             获取上一层 for 循环的 forloop
         当列表中可能为空值时用     for  empty
+########################################################################################
+windows下创建django工程：
+1.首先安装python,然后将python配置到环境变量C:\Python27    
+2.然后在Python27目录下解压缩django安装包，在命令行下Python setup.py install 安装，安装之后在配置环境变量.
+  C:\Python27\Lib\site-packages\django\bin;C:\Python27\Scripts
+3.创建django项目两种方式：
+    1.cmd下Python C:\Python27\Scripts django-admin.py startproject mysite
+    2.pycharm下直接创建django工程
