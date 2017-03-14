@@ -30,3 +30,6 @@ windows下创建django工程：
 3.创建django项目两种方式：
     1.cmd下Python C:\Python27\Scripts django-admin.py startproject mysite
     2.pycharm下直接创建django工程
+在windows中django项目中创建app步骤：
+    在pycharm的工具栏找到 Tools，点击之后会有“Run manage.py task”选项，点击它之后，
+    在pycharm下面会出现一个输入界面，在里面输入“startapp appName(你的App名称)”，回车之后就可以在工程下面看到你新建的App了。
