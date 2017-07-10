@@ -252,3 +252,142 @@ def reverse_recursion(head):
     return new_head     #返回头节点
 '''
 递归的方法非常简洁，但是效率不高。这种方法用的不熟练
+
+
+
+
+
+__author__ = 'jiangzhiheng'
+#coding=utf-8
+import copy
+
+
+class node():                             #定义一个节点类
+    def __init__(self,val,p=0):
+        self.data = val
+        self.next = p
+
+class linklist():
+    def __init__(self):
+
+        self.head = 0
+
+    def initlist(self,data):
+
+        self.head = node(data[0])
+        p = self.head
+        for i in data[1:]:
+            p.next = node(i)
+            p = p.next
+
+
+    def getlength(self):       #获得链表元素的个数
+
+        p = self.head
+        length = 0
+        while p!=0:
+            length+=1
+            p = p.next
+
+        return length
+
+    def insert(self,item,index):
+
+        if index>self.getlength() or index<=0:
+            print('please enter a valid index')
+            return
+        p = self.head
+        q = node(item)
+        while (index-1)!=0:        #在第index后面插入对象item
+            index=index-1
+            p = p.next
+        post = copy.deepcopy(p.next)
+        p.next = q
+        q.next = post
+
+    def getitem(self,index):
+
+        if index>self.getlength() or index<=0:
+            print('please enter a valid index')
+            return
+        p = self.head
+        while (index-1)!=0:
+            index=index-1
+            p = p.next
+        return p.data         #返回链表第index个对象的值
+
+    def remove(self,index):
+
+        if index>self.getlength() or index<=0:
+            print('please enter a valid index')
+            return
+        p = self.head
+        if index == 1:
+            self.head = p.next
+            return
+        while (index-2)!=0:           #移除链表中的第index对象
+            index=index-1
+            p = p.next
+        p.next = p.next.next
+
+    def search(self,item):      #在链表中搜索对象item
+        p = self.head
+        i = 1
+        while p!=0:
+           if p.data == item:
+               return i
+           i+=1
+           p = p.next
+
+
+l = linklist()
+l.initlist(range(7))
+print(l.getlength())
+l.insert(10,5)
+print(l.getitem(6))
+l.remove(5)
+print(l.search(5))
+i = 1
+while i<l.getlength():
+    print(l.getitem(i)),
+    i+=1
+
+
+
+"""
+def rotatestring(s,offset):
+	n=len(s)
+	offset=offset%n
+	for i in range(offset):
+		t=s.pop()
+		s.insert(0,t)
+	return s
+
+k=rotatestring(["a","b","c","d","e","f"],2)
+print k
+
+
+"""
+"""
+def reverseWords(s):  
+        cur = 0  
+        n = len(s)  
+        result = ''  
+        while cur != n:  
+            temp = ''  
+            while cur != n and s[cur] == ' ':  
+                cur += 1  
+
+            while cur != n and s[cur] != ' ':  
+                temp += s[cur]  
+                cur += 1  
+            if len(result) != 0 and len(temp) != 0:  
+                result = temp + ' ' + result  
+            elif len(temp) != 0:  
+                result = temp  
+
+	return result
+
+k=reverseWords("nihao wo shi ni")
+print k
+"""
