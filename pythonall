@@ -182,6 +182,54 @@ datefmt: 指定时间格式，同time.strftime()
 level: 设置日志级别，默认为logging.WARNING
 stream: 指定将日志的输出流，可以指定输出到sys.stderr,sys.stdout或者文件，
 默认输出到sys.stderr，当stream和filename同时指定时，stream被忽略
+
+第二种方法
+ import logging  
+  
+# 创建一个logger    
+logger = logging.getLogger()  
+  
+logger1 = logging.getLogger('mylogger')  
+logger1.setLevel(logging.DEBUG)  
+  
+logger2 = logging.getLogger('mylogger')  
+logger2.setLevel(logging.INFO)  
+  
+logger3 = logging.getLogger('mylogger.child1')  
+logger3.setLevel(logging.WARNING)  
+  
+  
+  
+# 创建一个handler，用于写入日志文件    
+fh = logging.FileHandler('/tmp/test.log')  
+  
+# 再创建一个handler，用于输出到控制台    
+ch = logging.StreamHandler()  
+  
+# 定义handler的输出格式formatter    
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')  
+fh.setFormatter(formatter)  
+ch.setFormatter(formatter)  
+  
+#定义一个filter  
+#filter = logging.Filter('mylogger.child1.child2')  
+#fh.addFilter(filter)    
+  
+# 给logger添加handler    
+#logger.addFilter(filter)  
+logger.addHandler(fh)  
+logger.addHandler(ch)  
+  
+  
+  
+# 记录一条日志    
+logger.debug('logger debug message')  
+logger.info('logger info message')  
+logger.warning('logger warning message')  
+logger.error('logger error message')  
+logger.critical('logger critical message')  
+  
+
 ######################################################################
 
 '''
