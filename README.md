@@ -1,1 +1,1 @@
-# pythonLearning
+# python学习过程中积累的一些基础知识
