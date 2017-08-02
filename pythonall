@@ -459,3 +459,12 @@ def myfunc(str):
 
 myfunc("lala")
 '''
+######################################################################
+#技巧：
+1.def INDENT_OUTPUT(depth, msg):
+	return ''.join(['    ' for i in range(0, depth)]) + msg
+2.生成器用法
+l=max((len(i) for i in ['123','nihao']))
+print l
+
+
